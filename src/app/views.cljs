@@ -8,7 +8,7 @@
                   :or {title "Some title"
                        description "some description"}}]
   [meta-tags* {:id "app-meta-tags"}
-   [:title {:id "title" :title title}]
+   [:title {:id "title"} title]
    [:meta {:id "description" :content description}]])
 
 (defn main-panel []
