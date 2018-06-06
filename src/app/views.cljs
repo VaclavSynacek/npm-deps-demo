@@ -1,18 +1,13 @@
 (ns app.views
   (:require [reagent.core :as reagent]
-            [react-helmet]))
+            [react-helmet :as rh]))
 
-(def meta-tags* (reagent/adapt-react-class (aget react-helmet "default")))
+(def meta-tags (reagent/adapt-react-class rh/Helmet))
 
-(defn meta-tags [{:keys [:title :description]
-                  :or {title "Some title"
-                       description "some description"}}]
-  [meta-tags* {:id "app-meta-tags"}
-   [:title {:id "title"} title]
-   [:meta {:id "description" :content description}]])
 
 (defn main-panel []
-  (fn []
-    [:div.container
-     [meta-tags]
-     [:h1 "Check for the meta-tags presence"]]))
+  [:div.container
+   [meta-tags
+     [:title "new title"]
+     [:meta {:id "description" :content "new description"}]]
+   [:h1 "Check for the meta-tags presence"]])
